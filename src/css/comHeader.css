@@ -1,0 +1,9 @@
+.headerDiv{
+
+    background-color: rgb(163, 163, 163);
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+
+
+}
