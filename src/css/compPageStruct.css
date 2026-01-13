@@ -1,7 +1,9 @@
 .struct {
-    align-items: center;
+   
     display: flex;
     justify-content: center;
+   min-height: 800px;
+   margin-top: 20px;
 }
 
 .row {

@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import api from '../config/axios';
 import { useNavigate } from 'react-router';
 import PageStruct from '../components/PageStruct';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 function Cars() {
 
@@ -14,65 +16,72 @@ function Cars() {
   const [isLoading, setIsLoading] = useState(false);
   const [carList, setCarList] = useState([]);
 
-
   useEffect(() => {
     handleSubmit();
   }, []);
 
-
   const handleSubmit = async () => {
-
-    const payload = {
-      headers: {
-        Authorization: "Bearer " + token
-      }
-
-    };
-
 
     try {
       setIsLoading(true)
       const response = await api.get('/rest/api/galleristcar/cars');
       setIsLoading(false)
-      console.log(response);
+    
       if (response != null) {
         setCarList(response.data.data);
       }
 
-
     } catch (error) {
       setIsLoading(false)
-      alert("Cars couldnt loaded !")
+      alert("Cars could not be loaded!")
       console.log(error);
-
-
     }
   }
 
-
-
-
+const availableCars = carList.filter(car=>car.carSaled==false)
+const saledCars = carList.filter(car=>car.carSaled==true);
 
   return (
-    <PageStruct>
-      <div className='generalDiv'>
-        <div className='addCarDiv'>
-          <Button onClick={() => navigate("/cars/add")} className='addButton' variant="primary">+ Add Car</Button>
-        </div>
-
-
-
-        <div >
-          {
-            carList.map((car) => (
-              <CarsBox key={car.id} data={car} />
-            ))
-          }
-          {carList.length === 0 && !isLoading && <p>No vehicles to list.</p>}
-
-        </div>
+   <PageStruct>
+    <div >
+      
+      <div className='addCarDiv'>
+        <Button onClick={() => navigate("/cars/add")} className='addButton' variant="primary">
+          + Add Car
+        </Button>
       </div>
-    </PageStruct>
+
+     <Tabs defaultActiveKey="gallery" id="car-tabs" className="mb-3" fill>
+      
+      <Tab eventKey="gallery" title={`Vehicles in the Gallery (${availableCars.length})`}>
+        <div className="cars-list-container">
+          {availableCars.map((car)=>(
+            <CarsBox key={car.id} data={car}/>
+          ))}
+          
+          {availableCars.length === 0 && !isLoading &&(
+            <div className="empty-message">Current gallery is empty.</div>
+          )}
+        </div>
+      </Tab>
+      
+       <Tab eventKey="sold" title={`Sold Cars (${saledCars.length})`}>
+        <div className="cars-list-container">
+          {saledCars.map((car)=>(
+            <CarsBox key={car.id} data={car}/>
+          ))}
+          
+          {saledCars.length === 0 && !isLoading &&(
+            <div className="empty-message">No sales history found.</div>
+          )}
+        </div>
+      </Tab>
+
+     </Tabs>
+     
+     {isLoading && <p className="text-center mt-3">Loading...</p>}
+    </div>
+  </PageStruct>
   )
 }
 

@@ -1,41 +1,76 @@
-.info-div{
-margin-top: 8px;
+/* cars.css */
 
-
-}
-
-
-.custom-input:focus {
-    background-color: #fff;
-    border-color: #764ba2;
-    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
-}
-.custom-input:focus {
-    background-color: #fff;
-    border-color: #764ba2;
-    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
-}
-
-
-.send-button {
+/* Ana Kapsayıcı: Biraz iç boşluk verelim ki kenarlara yapışmasın */
+.generalDiv {
     width: 100%;
-    height: 50px;
-    background: linear-gradient(to right, #667eea, #764ba2);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
+    min-height: 400px;
+    padding: 20px;
+    background-color: #fff; /* Temiz beyaz zemin */
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Çok hafif gölge ile derinlik */
+}
+
+/* Üst Kısım: Buton ve Başlık hizalaması */
+.addCarDiv {
+    height: auto; /* Sabit yükseklik yerine auto */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Sağa yasla */
+    padding-bottom: 15px; /* Sekmelerle buton arasına boşluk */
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0; /* İnce bir çizgi ile ayır */
+}
+
+/* Ekleme Butonu: Daha modern ve tıklanabilir */
+.addButton {
+    padding: 10px 20px;
     font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 8px;
+    background: linear-gradient(to right, #667eea, #764ba2); /* Login butonuyla aynı */
+    border: none;
+    box-shadow: 0 4px 6px rgba(118, 75, 162, 0.2);
+    transition: transform 0.2s;
 }
 
-.send-button:hover {
+.addButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+    box-shadow: 0 6px 12px rgba(118, 75, 162, 0.3);
 }
 
-.send-button:active {
-    transform: translateY(0);
+/* --- GRID YAPISI (En Önemli Kısım) --- */
+/* Arabaları yan yana kartlar halinde dizer */
+.cars-grid {
+    display: grid;
+    /* Responsive Sihir: Ekran küçülürse tekli, büyürse yan yana 2, 3, 4 olur */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 25px; /* Kartlar arası boşluk */
+    padding-top: 20px;
+}
+
+/* --- BOŞ DURUM MESAJI --- */
+/* "Araba yok" yazısını güzelleştirme */
+.empty-message {
+    grid-column: 1 / -1; /* Tüm satırı kaplasın */
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px dashed #ddd;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Bootstrap Tabs Özelleştirme (CSS dosyasının en altına ekle) */
+.nav-tabs .nav-link {
+    color: #666;
+    font-weight: 500;
+    border: none; /* Çizgileri kaldır */
+    border-bottom: 3px solid transparent;
+}
+
+.nav-tabs .nav-link.active {
+    color: #764ba2 !important; /* Aktif sekme mor olsun */
+    border-bottom: 3px solid #764ba2 !important;
+    background-color: transparent !important;
 }

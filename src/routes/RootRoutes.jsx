@@ -8,6 +8,8 @@ import Cars from '../pages/Cars'
 import AddCars from '../pages/AddCars'
 import Employee from '../pages/Employee'
 import SellCar from '../pages/SellCar'
+import DescriptionGenerator from '../pages/DescriptionGenerator'
+import SmartCarFinder from '../pages/SmartCarFinder'
 
 function RootRoutes() {
     return (
@@ -18,6 +20,8 @@ function RootRoutes() {
                 <Route path='/cars' element={<Cars />} />
                 <Route path='/cars/add' element={<AddCars />} />
                 <Route path='/cars/sell/:carId' element={<SellCar />} />
+                <Route path='/carfinder' element={<SmartCarFinder />} />
+                <Route path='/description' element={<DescriptionGenerator />} />
                 <Route path='/employee' element={<Employee />} />
 
 

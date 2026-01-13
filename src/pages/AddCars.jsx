@@ -4,6 +4,7 @@ import PageStruct from '../components/PageStruct';
 import api from '../config/axios';
 import { useNavigate } from 'react-router'; 
 import Alert from 'react-bootstrap/Alert'; 
+import Button from 'react-bootstrap/esm/Button';
 
 function AddCars() {
 
@@ -62,7 +63,7 @@ function AddCars() {
   return (
     <PageStruct>
 
-
+<Button className="btn-danger" onClick={() => navigate(-1)}> Back </Button>
       {showSuccess && (
         <div style={{ width: '400px',marginTop:"20px",  margin: '20px auto 20px auto' }}>
           <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>

@@ -52,26 +52,26 @@ function SellCar() {
 
 
     const handleFinalConfirm = async () => {
-
-
-
-
-
-
-
         const payload = {
-
-            gallerist: username,
-            car: password,
-           
+            car: params.carId,
+            customer: {
+                firstName: firstName,
+                lastName: lastName,
+                tckn: tckn,
+                birthOfDate: birthOfDate,
+                address: {
+                    city: city,
+                    district: district,
+                    street: street
+                }
+            }
         };
-
 
         try {
             setIsLoading(true)
-            const response = await api.post(`/rest/api/sell`);
+            const response = await api.post(`/rest/api/sell`,payload);
             setIsLoading(false)
-            setCarDetails(response.data.data);
+            console.log("successful");
 
             if (response == null) {
                 console.log("null");
@@ -81,8 +81,6 @@ function SellCar() {
             console.log(error);
         }
     }
-
-
 
     const getCarDetails = async () => {
 
@@ -100,9 +98,6 @@ function SellCar() {
             console.log(error);
         }
     }
-
-
-
     return (
         <PageStruct>
 
