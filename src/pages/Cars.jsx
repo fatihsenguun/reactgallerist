@@ -1,16 +1,15 @@
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import "../css/cars.css"
 import CarsBox from '../components/CarsBox';
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
+import api from '../config/axios';
+import { useNavigate } from 'react-router';
+import PageStruct from '../components/PageStruct';
 
 function Cars() {
 
-  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const token = localStorage.getItem("accessToken");
 
   const [isLoading, setIsLoading] = useState(false);
   const [carList, setCarList] = useState([]);
@@ -33,11 +32,11 @@ function Cars() {
 
     try {
       setIsLoading(true)
-      const response = await axios.get(`http://localhost:8080/rest/api/galleristcar/cars`, payload)
+      const response = await api.get('/rest/api/galleristcar/cars');
       setIsLoading(false)
       console.log(response);
       if (response != null) {
-        setCarList(response.data);
+        setCarList(response.data.data);
       }
 
 
@@ -55,37 +54,25 @@ function Cars() {
 
 
   return (
-    <div className='cars'>
-      <Container>
-        <Row className='row'>
-          <Col lg={2}>
-
-          </Col>
-          <Col lg={8}>
-            <div className='addCarDiv'>
-               <Button className='addButton' variant="primary">+ Add Car</Button>
-            </div>
+    <PageStruct>
+      <div className='generalDiv'>
+        <div className='addCarDiv'>
+          <Button onClick={() => navigate("/cars/add")} className='addButton' variant="primary">+ Add Car</Button>
+        </div>
 
 
 
-            <div className='generalDiv'>
-              {
-                carList.map((car) => (
-                  <CarsBox key={car.id} data={car} />
-                ))
-              }
-              {carList.length === 0 && !isLoading && <p>No vehicles to list.</p>}
+        <div >
+          {
+            carList.map((car) => (
+              <CarsBox key={car.id} data={car} />
+            ))
+          }
+          {carList.length === 0 && !isLoading && <p>No vehicles to list.</p>}
 
-            </div>
-          </Col>
-          <Col lg={2}>
-
-          </Col>
-        </Row>
-      </Container>
-
-
-    </div>
+        </div>
+      </div>
+    </PageStruct>
   )
 }
 

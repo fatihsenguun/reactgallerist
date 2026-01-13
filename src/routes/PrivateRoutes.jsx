@@ -5,7 +5,7 @@ import Header1 from '../components/Header1';
 
 const PrivateRoutes = () => {
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("accessToken");
 
   if (token) {
     return (<div>

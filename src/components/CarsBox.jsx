@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import "../css/compCarBox.css"
 import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router';
 
 
 function CarsBox(data) {
+    const navigate = useNavigate();
 
 console.log();
 
@@ -24,7 +27,9 @@ console.log();
                 </div>
                 <div className='car-footer'>
                     <div className='price'>{data.data.price} TL</div>
+                     <Button onClick={() => navigate("/cars/sell/"+data.data.id)} size='sm' className='addButton' variant="danger">Sell</Button>
                 </div>
+               
             </div>
         </div>
     )

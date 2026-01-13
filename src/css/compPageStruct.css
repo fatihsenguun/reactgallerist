@@ -1,0 +1,16 @@
+.struct {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    height: 100%;
+}
+
+.generalDiv {
+    width: 100%;
+    min-height: 200px;
+
+    border-radius: 10px;
+}

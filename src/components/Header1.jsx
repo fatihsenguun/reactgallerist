@@ -16,7 +16,8 @@ function Header1() {
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/cars">Cars</Nav.Link>
-                     
+                        <Nav.Link href="/employee">Employee</Nav.Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

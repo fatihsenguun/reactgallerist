@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'
 import "../css/login.css";
 import { useNavigate } from 'react-router';
+import api from '../config/axios';
 
 function Login() {
 
@@ -18,22 +19,24 @@ function Login() {
 
             username: username,
             password: password
-
-
         };
-
 
         try {
             setIsLoading(true)
-            const response = await axios.post('http://localhost:8080/authenticate', payload)
+         const response = await axios.post('http://localhost:8080/authenticate',payload);
+
+         if (response.data.data.accessToken) {
+            
+            console.log(response);
+            localStorage.setItem('accessToken',response.data.data.accessToken);
+            localStorage.setItem("refreshToken",response.data.data.refreshToken);
+
+
+
+            
+            navigate('/');
             setIsLoading(false)
-            console.log("Login Success");
-
-            if (response.data) {
-                localStorage.setItem("token", response.data.data.accessToken);
-                navigate("/");
-
-            }
+         }
 
         } catch (error) {
             setIsLoading(false)

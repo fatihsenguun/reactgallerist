@@ -83,3 +83,6 @@
 .detail-btn:hover {
     background-color: #764ba2;
 }
+.addButton{
+    height: 35px;
+}
