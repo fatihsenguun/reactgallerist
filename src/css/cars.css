@@ -90,3 +90,9 @@
     background-color: transparent !important;
     border-bottom: 3px solid #4f46e5 !important;
 }
+.addCarDiv{
+    align-items: center;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+}

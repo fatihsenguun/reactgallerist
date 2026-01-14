@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import PageStruct from '../components/PageStruct';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import WelcomeSection from "../components/WelcomeSection";
 
 function Cars() {
 
@@ -43,9 +44,12 @@ const saledCars = carList.filter(car=>car.carSaled==true);
 
   return (
    <PageStruct>
+ 
     <div >
+      <div style={{padding:"20px 0"}}>  <WelcomeSection title={"Inventory"} desc={"You can manage your cars."}/></div>
       
-      <div className='addCarDiv'>
+      <div className='addCarDiv' >
+      
         <Button onClick={() => navigate("/cars/add")} className='addButton' variant="primary">
           + Add Car
         </Button>

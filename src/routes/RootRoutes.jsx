@@ -10,11 +10,13 @@ import Employee from '../pages/Employee'
 import SellCar from '../pages/SellCar'
 import DescriptionGenerator from '../pages/DescriptionGenerator'
 import SmartCarFinder from '../pages/SmartCarFinder'
+import Register from '../pages/Register'
 
 function RootRoutes() {
     return (
         <Routes>
             <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
             <Route element={<PrivateRoutes />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/cars' element={<Cars />} />

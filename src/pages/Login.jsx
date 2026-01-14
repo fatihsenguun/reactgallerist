@@ -23,20 +23,20 @@ function Login() {
 
         try {
             setIsLoading(true)
-         const response = await axios.post('http://localhost:8080/authenticate',payload);
+            const response = await axios.post('http://localhost:8080/authenticate', payload);
 
-         if (response.data.data.accessToken) {
-            
-            console.log(response);
-            localStorage.setItem('accessToken',response.data.data.accessToken);
-            localStorage.setItem("refreshToken",response.data.data.refreshToken);
+            if (response.data.data.accessToken) {
+
+                console.log(response);
+                localStorage.setItem('accessToken', response.data.data.accessToken);
+                localStorage.setItem("refreshToken", response.data.data.refreshToken);
 
 
 
-            
-            navigate('/');
-            setIsLoading(false)
-         }
+
+                navigate('/');
+                setIsLoading(false)
+            }
 
         } catch (error) {
             setIsLoading(false)
@@ -92,7 +92,13 @@ function Login() {
 
                 </div>
             </div>
+            <div className='footer'>
+                <p>Want to manage your gallery ? </p>
+
+               <a style={{textDecoration:"none"}} href="/register"> <p style={{marginLeft:"5px"}}>Sign up now.</p></a>
+            </div>
         </div>
+
     )
 }
 

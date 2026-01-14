@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import PageStruct from '../components/PageStruct'
 import "../css/home.css"
 import api from '../config/axios';
+import WelcomeSection from '../components/WelcomeSection';
 
 function Home() {
   const navigate = useNavigate();
@@ -48,10 +49,7 @@ function Home() {
     <PageStruct>
       <div className='dashboard-container'>
 
-        <div className="welcome-section">
-          <h1 className="welcome-title">Dashboard</h1>
-          <p className="welcome-subtitle">Overview of your gallery performance and AI tools.</p>
-        </div>
+        <WelcomeSection title="Dashboard" desc="Overview of your gallery performance and AI tools." />
 
         <div className="stats-grid">
           <div className="stat-card">

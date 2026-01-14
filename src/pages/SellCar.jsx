@@ -34,6 +34,7 @@ function SellCar() {
 
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successModal, setSuccessModal] = useState(false);
 
 
     const handlePreSubmit = () => {
@@ -49,6 +50,15 @@ function SellCar() {
         getCarDetails();
     }, []);
 
+    const success = () => {
+        setShowConfirmModal(false);
+        setSuccessModal(true);
+
+        setTimeout(() => {
+            navigate("/cars")
+        }, 2500);
+
+    }
 
 
     const handleFinalConfirm = async () => {
@@ -69,12 +79,13 @@ function SellCar() {
 
         try {
             setIsLoading(true)
-            const response = await api.post(`/rest/api/sell`,payload);
+            const response = await api.post(`/rest/api/sell`, payload);
             setIsLoading(false)
-            console.log("successful");
-
             if (response == null) {
                 console.log("null");
+            }
+            else {
+                success();
             }
         } catch (error) {
             setIsLoading(false)
@@ -204,6 +215,20 @@ function SellCar() {
                         {isSubmitting ? "Processing..." : "Yes, Confirm Sale"}
                     </Button>
                 </Modal.Footer>
+            </Modal>
+
+
+
+            <Modal show={successModal} onHide={() => setShowConfirmModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Sale Completed</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4 style={{ color: '#28a745', fontWeight: 'bold'}}> SUCCESS ✅</h4>
+                    <p >The vehicle has been sold successfully.</p>
+
+                    <p className="text-danger small">* You are being redirected to the car list...</p>
+                </Modal.Body>
             </Modal>
 
         </PageStruct>

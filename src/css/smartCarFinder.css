@@ -1,0 +1,54 @@
+.smartCarDiv {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+
+}
+
+.inputDiv {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.input {
+    min-width: 400px;
+    height: 50px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    background-color: #fff;
+    border-color: #764ba2;
+    box-shadow: 0 0 0 4px rgba(118, 75, 162, 0.1);
+}
+
+.midDiv {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.button{
+    width: 90px;
+    height: 45px;
+}
+.findedCars{
+    margin-top: 60px;
+    display: flex;             /* Esnek kutu yapısını açar */
+    flex-direction: column;    /* Elemanları alt alta dizer */
+    gap: 30px;                 /* HER KUTU ARASINA 30px BOŞLUK KOYAR */
+    width: 100%;
+
+}
