@@ -4,6 +4,7 @@
 .register-container {
     min-height: 100vh;
     display: flex;
+    margin: 30px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
