@@ -47,10 +47,10 @@ function DescriptionGenerator() {
         <WelcomeSection title="Description Generator" desc="Please enter the license plate number to get the vehicle details." />
         <div className='midDiv'>
           <div className='inputDiv'>
-            <input onChange={(e) => setPlate(e.target.value)} placeholder='Enter License...' className='input' />
+            <input disabled={isLoading}  onChange={(e) => setPlate(e.target.value)} placeholder='Enter License...' className='input' />
           </div>
 
-          <Button onClick={handleFinalConfirm} className='button'>Generate</Button>
+          <Button disabled={isLoading} onClick={handleFinalConfirm} className='button'>{isLoading?"Loading...":"Generate"}</Button>
 
         </div>
         <div style={{marginTop:"50px"}} className='descDiv'>

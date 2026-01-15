@@ -31,6 +31,7 @@ function Login() {
                 console.log(response);
                 localStorage.setItem('accessToken', response.data.data.accessToken);
                 localStorage.setItem("refreshToken", response.data.data.refreshToken);
+                localStorage.setItem("role",response.data.data.role);
 
 
 

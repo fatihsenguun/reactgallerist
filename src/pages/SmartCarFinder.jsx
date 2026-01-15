@@ -63,24 +63,15 @@ function SmartCarFinder() {
 
 
 
-
-
-
-
-
-
-
-
-
   return (
     <PageStruct>
       <div className='smartCarDiv'>
         <WelcomeSection title="Smart Car Finder" desc="Simply describe what you're looking for, and let AI find the perfect match." />
         <div className='midDiv'>
           <div className='inputDiv'>
-            <textarea onChange={(e) => setPrompt(e.target.value)} placeholder='Enter Text...' className='input' />
+            <textarea disabled={isLoading} onChange={(e) => setPrompt(e.target.value)} placeholder='Enter Text...' className='input' />
           </div>
-          <Button onClick={handleFinalConfirm} className='button'>Find</Button>
+          <Button disabled={isLoading} onClick={handleFinalConfirm} className='button'>{isLoading?"Loading...":"Find"}</Button>
 
         </div>
         <div className='findedCars'>

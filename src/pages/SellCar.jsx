@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router'
 import PageStruct from '../components/PageStruct';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-
+import Swal from 'sweetalert2';
 import Modal from 'react-bootstrap/Modal';
 import api from '../config/axios';
 
@@ -35,6 +35,46 @@ function SellCar() {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successModal, setSuccessModal] = useState(false);
+
+    if (showConfirmModal) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: carDetails.plate ,
+            text:"Do you approve the sale transaction based on the following information?" ,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, approve!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                setShowConfirmModal(false);
+                handleFinalConfirm();
+                swalWithBootstrapButtons.fire({
+                    title: "Approved!",
+                    text: "Car has been sold",
+                    icon: "success"
+                });
+              
+            } else if (
+
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "Car sale not approved",
+                    icon: "error"
+                });
+            }
+        });
+    }
 
 
     const handlePreSubmit = () => {
@@ -194,42 +234,8 @@ function SellCar() {
                 </button>
 
             </div>
-            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Sales Confirmation</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>Do you approve the sale transaction based on the following information?</p>
-                    <ul style={{ background: '#f8f9fa', padding: '15px', borderRadius: '5px' }}>
-                        <h4 style={{ margin: 0, color: '#333' }}>{carDetails.brand} {carDetails.model}</h4>
-                        <p style={{ margin: 0, color: '#666' }}>Plate: {carDetails.plate} | Year: {carDetails.productionYear}</p>
-                        <p style={{ margin: 0, fontWeight: 'bold', color: '#28a745' }}></p>
-                    </ul>
-                    <p className="text-danger small">* This action is irreversible.</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>
-                        Cancel
-                    </Button>
-                    <Button variant="success" onClick={handleFinalConfirm} disabled={isSubmitting}>
-                        {isSubmitting ? "Processing..." : "Yes, Confirm Sale"}
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+        
 
-
-
-            <Modal show={successModal} onHide={() => setShowConfirmModal(false)} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>Sale Completed</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4 style={{ color: '#28a745', fontWeight: 'bold'}}> SUCCESS ✅</h4>
-                    <p >The vehicle has been sold successfully.</p>
-
-                    <p className="text-danger small">* You are being redirected to the car list...</p>
-                </Modal.Body>
-            </Modal>
 
         </PageStruct>
     )

@@ -5,6 +5,7 @@ import api from '../config/axios';
 import { useNavigate } from 'react-router'; 
 import Alert from 'react-bootstrap/Alert'; 
 import Button from 'react-bootstrap/esm/Button';
+import Swal from 'sweetalert2';
 
 function AddCars() {
 
@@ -22,6 +23,20 @@ function AddCars() {
 
   const [showSuccess, setShowSuccess] = useState(false); 
 
+  if(showSuccess){
+      Swal.fire({
+                  title: 'Car Added!',
+                  text: 'Your vehicle has been successfully added to your gallery.',
+                  icon: 'success',
+                  confirmButtonText: 'Go to Inventory',
+                  confirmButtonColor: '#28a745'
+                }).then((result) => {
+        
+                  if (result.isConfirmed) {
+                    navigate("/cars");
+                  }
+                });
+  }
   const handleSubmit = async () => {
 
     const payload = {
@@ -64,13 +79,7 @@ function AddCars() {
     <PageStruct>
 
 <Button className="btn-danger" onClick={() => navigate(-1)}> Back </Button>
-      {showSuccess && (
-        <div style={{ width: '400px',marginTop:"20px",  margin: '20px auto 20px auto' }}>
-          <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
-            Araç başarıyla kaydedildi! Listeye yönlendiriliyorsunuz...
-          </Alert>
-        </div>
-      )}
+    
 
       <div className="info-div">
         <h2>Add New Vehicle</h2>

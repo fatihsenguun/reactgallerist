@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import "../css/register.css"
 import axios from 'axios';
+import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 function Register() {
-
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [galleristName, setGalleristName] = useState("");
@@ -14,6 +16,7 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
+
 
     const payload = {
       username: username,
@@ -35,16 +38,30 @@ function Register() {
       setIsLoading(true)
       const response = await axios.post('http://localhost:8080/register', payload);
 
-      if (response.data.data) {
-        console.log(response.data.data);
-        navigate('/login');
-        setIsLoading(false)
+      if (response.status === 200) {
+        Swal.fire({
+          title: 'Welcome Aboard! 🎉',
+          text: 'Your account has been created successfully. You can now log in.',
+          icon: 'success',
+          confirmButtonText: 'Go to Login',
+          confirmButtonColor: '#28a745'
+        }).then((result) => {
+
+          if (result.isConfirmed) {
+            navigate("/login");
+          }
+        });
       }
 
     } catch (error) {
       setIsLoading(false)
-      alert("Error !")
-      console.log(error);
+      Swal.fire({
+        title: 'Registration Failed',
+        text: error.response?.data?.message || 'Something went wrong. Please try again.',
+        icon: 'error',
+        confirmButtonText: 'Try Again',
+        confirmButtonColor: '#d33'
+      });
 
 
     }

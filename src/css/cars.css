@@ -34,6 +34,9 @@
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     transition: all 0.3s ease;
+        margin-bottom: 10px;
+
+
 }
 
 .addButton:hover {

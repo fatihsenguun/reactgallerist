@@ -11,6 +11,8 @@ import SellCar from '../pages/SellCar'
 import DescriptionGenerator from '../pages/DescriptionGenerator'
 import SmartCarFinder from '../pages/SmartCarFinder'
 import Register from '../pages/Register'
+import AddEmployee from '../pages/AddEmployee'
+import AdminRoutes from './AdminRoutes'
 
 function RootRoutes() {
     return (
@@ -24,7 +26,11 @@ function RootRoutes() {
                 <Route path='/cars/sell/:carId' element={<SellCar />} />
                 <Route path='/carfinder' element={<SmartCarFinder />} />
                 <Route path='/description' element={<DescriptionGenerator />} />
-                <Route path='/employee' element={<Employee />} />
+
+                <Route element={<AdminRoutes />}>
+                    <Route path='/employee' element={<Employee />} />
+                    <Route path='/employee/add' element={<AddEmployee />} />
+                </Route>
 
 
             </Route>

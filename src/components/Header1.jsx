@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 
 function Header1() {
 
+      const role = localStorage.getItem("role")
     const navigate = useNavigate();
 
 const logOut =()=>{
@@ -35,7 +36,7 @@ navigate("/login")
                         <Nav.Link href="/carfinder" className="nav-item-link">Car Finder</Nav.Link>
                         <Nav.Link href="/description" className="nav-item-link">Description Generator</Nav.Link>
                         <Nav.Link href="/cars" className="nav-item-link">Inventory</Nav.Link>
-                        <Nav.Link href="/employee" className="nav-item-link">Employee</Nav.Link>
+                       {role=="ADMIN"? <Nav.Link href="/employee" className="nav-item-link">Employee</Nav.Link>:<div></div>}
                     </Nav>
                 </Navbar.Collapse>
                    <Button onClick={logOut} className='btn' variant="danger">Log out</Button>
