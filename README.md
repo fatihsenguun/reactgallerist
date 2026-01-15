@@ -46,7 +46,7 @@ Images from the project interface including the AI features.
 
 | Vehicle List & Inventory | Sales Transaction |
 |:---:|:---:|
-| ![Car List](./screenshots/car-list.png) | ![Sell Car](./screenshots/sell.png) |
+| ![Car List](./screenshots/inventory.png) | ![Sell Car](./screenshots/sell.png) |
 | *Vehicle Inventory* | *Sales and Customer Form* |
 
 (Note: Images are located under the screenshots folder.)
