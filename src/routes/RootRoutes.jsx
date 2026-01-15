@@ -19,6 +19,10 @@ function RootRoutes() {
         <Routes>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route element={<AdminRoutes />}>
+                <Route path='/employee' element={<Employee />} />
+                <Route path='/employee/add' element={<AddEmployee />} />
+            </Route>
             <Route element={<PrivateRoutes />}>
                 <Route path='/' element={<Home />} />
                 <Route path='/cars' element={<Cars />} />
@@ -27,10 +31,7 @@ function RootRoutes() {
                 <Route path='/carfinder' element={<SmartCarFinder />} />
                 <Route path='/description' element={<DescriptionGenerator />} />
 
-                <Route element={<AdminRoutes />}>
-                    <Route path='/employee' element={<Employee />} />
-                    <Route path='/employee/add' element={<AddEmployee />} />
-                </Route>
+
 
 
             </Route>

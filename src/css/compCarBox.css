@@ -5,10 +5,11 @@
     border-radius: 16px;
     border: 1px solid #f1f5f9;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-    margin-bottom: 0;
+    margin-bottom: 20px; /* Kartlar birbirine yapışmasın */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    min-height: 180px;
+    min-height: 150px;
     overflow: hidden;
+    position: relative;
 }
 
 .car-card:hover {
@@ -19,7 +20,7 @@
 
 .car-info {
     width: 100%;
-    padding: 32px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,53 +28,54 @@
 }
 
 .car-header {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .title-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 16px;
 }
 
 .car-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 800;
     color: #1e293b;
     margin: 0;
     letter-spacing: -0.025em;
+    display: flex;
+    align-items: center;
 }
 
 .model-text {
     font-weight: 500;
     color: #64748b;
-    margin-left: 6px;
-}
-
-.price-tag {
-    font-size: 24px;
-    font-weight: 800;
-    color: #4f46e5;
-    letter-spacing: -0.5px;
+    margin-left: 8px;
+    font-size: 0.9em;
 }
 
 .car-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-.tag {
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 13px;
+.carTag {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
     font-weight: 600;
+    display: inline-flex;
+    align-items: center;
 }
 
-.tag.year { background-color: #f1f5f9; color: #475569; }
-.tag.km { background-color: #e0f2fe; color: #0284c7; }
-.tag.color { background-color: #f3e8ff; color: #9333ea; }
+/* Tag Renkleri */
+.tag.year { background-color: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+.tag.km { background-color: #f0f9ff; color: #0284c7; border: 1px solid #e0f2fe; }
+.tag.color { background-color: #faf5ff; color: #7e22ce; border: 1px solid #f3e8ff; }
+.tag.plate { background-color: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
 
 .tag.damage {
     background-color: #fef2f2;
@@ -91,53 +93,47 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 24px;
+    padding-top: 20px;
     border-top: 1px solid #f1f5f9;
+    margin-top: auto;
 }
 
-.status-text {
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.price-tag {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
 }
 
-.status-text.active::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background-color: #22c55e;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.status-text.active { color: #22c55e; }
-.status-text.sold { color: #94a3b8; }
-
+/* Sat butonunu React-Bootstrap varsayılanlarından kurtarıp custom yapıyoruz */
 .sell-btn {
-    background-color: #1e293b;
-    color: #fff;
+    background-color: #0f172a;
+    color: #ffffff;
     border: none;
-    padding: 10px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 13px;
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .sell-btn:hover {
-    background-color: #4f46e5;
-    transform: translateX(2px);
+    background-color: #4338ca;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
 }
 
 .sold-badge {
     background-color: #f1f5f9;
     color: #94a3b8;
     font-weight: 700;
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 8px;
-    font-size: 13px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
     border: 1px solid #e2e8f0;
+    user-select: none;
 }

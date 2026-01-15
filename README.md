@@ -1,16 +1,78 @@
-# React + Vite
+# 🚗 Gallerist Frontend - Modern Vehicle Management UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-18-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow) ![Axios](https://img.shields.io/badge/HTTP-Axios-purple) 
 
-Currently, two official plugins are available:
+Gallerist Frontend is a modern React web application that facilitates vehicle buying/selling processes, personnel management, and financial tracking. It communicates with a powerful Spring Boot Backend service to offer a secure and fast experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔥 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The application has a structure that dynamically adapts based on the user role (Admin/Employee).
 
-## Expanding the ESLint configuration
+### 🔐 Authentication & Security
+* Login & Register: JWT-based secure sign-in.
+* Role-Based Access Control (RBAC): Distinct menus and permissions for Admin and Personnel (Employee).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🤖 AI Powered Features
+* AI Vehicle Search (Car Finder): Search for vehicles using natural language queries (e.g., "Find me a low-budget SUV suitable for families") powered by artificial intelligence.
+* AI Description Generator: Automatically generates compelling and detailed sales descriptions for vehicles based on their technical specifications to enhance marketing.
+
+### 👨‍💼 Management Panel (Admin Only)
+* Personnel Management: Adding new employees and listing current staff.
+* Financial Tables: Profit/Loss status, total turnover, and graphical/tabular analysis of sold vehicles.
+
+### 🚘 Vehicle & Sales Operations
+* Vehicle Inventory: Listing and filtering all vehicles in the gallery.
+* Add Vehicle: Entry of new vehicles into the system with brand, model, year, price, and technical specifications.
+* Sales Module: Instant sales transaction with customer information (ID Number, Address, Name).
+* Sales Confirmation: Confirmation mechanism powered by SweetAlert2 to prevent accidental sales.
+
+---
+
+## 📸 Screenshots
+
+Images from the project interface including the AI features.
+
+| Login Screen | Dashboard & Profit Table |
+|:---:|:---:|
+| ![Login Page](./screenshots/login.png) | ![Dashboard](./screenshots/dashboard.png) |
+| *Secure Login Panel* | *Admin Overview* |
+
+| AI Car Finder | AI Description Generator |
+|:---:|:---:|
+| ![Car Finder](./screenshots/finder.png) | ![Description Generator](./screenshots/description.png) |
+| *Natural Language Search* | *Automatic Sales Text Generation* |
+
+| Vehicle List & Inventory | Sales Transaction |
+|:---:|:---:|
+| ![Car List](./screenshots/car-list.png) | ![Sell Car](./screenshots/sell.png) |
+| *Vehicle Inventory* | *Sales and Customer Form* |
+
+(Note: Images are located under the screenshots folder.)
+
+---
+
+## 🛠 Technologies Used
+
+* Core: React.js (Hooks, Context API)
+* Routing: React Router DOM v6
+* HTTP Client: Axios (with Interceptor structure)
+* AI Integration: OpenAI API / Custom AI Integration
+* Styling: CSS3 (Custom Grid/Flex Layouts)
+
+---
+
+## 🚀 Installation
+
+Follow the steps below to run the project in your local environment.
+
+### 1. Clone the Project
+git clone https://github.com/fatihsenguun/reactgallerist.git
+cd gallerist-frontend
+
+### 2. Install Dependencies
+npm install
+
+### 3. Start the Project
+npm run dev
